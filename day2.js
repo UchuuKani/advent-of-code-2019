@@ -1,8 +1,8 @@
 const {day2: {intCodeList}} = require("./inputsForDays");
 
 const inputWithChanges = [...intCodeList];
-inputWithChanges[1] = 12;
-inputWithChanges[2] = 2;
+inputWithChanges[1] = 82;
+inputWithChanges[2] = 50;
 
 const gravityAssist = inputArr => {
   let idx = 0;
@@ -27,7 +27,31 @@ const gravityAssist = inputArr => {
   return inputArr;
 }
 
-console.log(gravityAssist(inputWithChanges)[0]);
+const findThePair = intArr => {
+  for (let i = 0; i < 100; i++) {
+    const firstCopy = [...intArr];
+
+    firstCopy[1] = i;
+
+    for (let j = 0; j < 100; j++) {
+      const secondCopy = [...firstCopy];
+
+      secondCopy[2] = j;
+
+      if (gravityAssist(secondCopy)[0] === 19690720) {
+        return [i, j];
+      }
+    }
+  }
+
+  return "oh no...";
+}
+
+const [noun, verb] = findThePair([...intCodeList]);
+
+const result = gravityAssist(inputWithChanges)[0];
+
+console.log(`${result} equals 19690720 is ${result === 19690720} and 100 * noun + verb is ${100 * noun + verb}`);
 
 // const test1 = [1,0,0,0,99];
 // const test2 = [2,3,0,3,99];
