@@ -53,7 +53,7 @@ const leastZeroesMatrix = imgArr => { //finds the row (array) where the smallest
   return findOnes(leastRow) * findTwos(leastRow);
 }
 
-console.log(leastZeroesMatrix(readImage(day8)));
+console.log(readImage(day8).length);
 
 
 
